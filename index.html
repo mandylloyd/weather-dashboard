@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weather Dashboard</title>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+		<title>Weather Dashboard</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="side searchZip">
+					<form class="form-control" method="post">
+						<label for="cityListText"></label>
+						<input
+							type="text"
+							placeholder="Search.."
+							id="searchInput"
+							name="cityListText"
+						/>
+						<button type="submit" id="searchForm" value="search">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+
+					<ul class="list-group list-group-flush" id="cityList"></ul>
+				</div>
+				<div class="main">
+					<h3>Weather Dashboard</h3>
+					<div class="row">
+						<div class="col">
+							<div class="card">
+								<p class="currentCity"></p>
+								<p class="currentIcon"></p>
+								<p class="currentTemp"></p>
+								<p class="currentHum"></p>
+								<p class="currentWind"></p>
+								<p class="currentUV"></p>
+							</div>
+						</div>
+					</div>
+					<br />
+					<h4>5-Day Forecast</h4>
+					<div class="row">
+						<div class="col">
+							<div class="card">
+								<p class="dayOne"></p>
+								<img class="iconDay1"></img>
+								<p class="tempOne"></p>
+								<p class="windOne"></p>
+								<p class="humOne"></p>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<p class="dayTwo"></p>
+								<img class="iconDay2"></img>
+								<p class="tempTwo"></p>
+								<p class="windTwo"></p>
+								<p class="humTwo"></p>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<p class="dayThree"></p>
+								<img class="iconDay3"></img>
+								<p class="tempThree"></p>
+								<p class="windThree"></p>
+								<p class="humThree"></p>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card">
+								<p class="dayFour"></p>
+								<img class="iconDay4"></img>
+								<p class="tempFour"></p>
+								<p class="windFour"></p>
+								<p class="humFour"></p>
+							</div>
+						</div>
+						<div class="col">
+							<div class="card5">
+								<p class="dayFive"></p>
+								<img class="iconDay5"></img>
+								<p class="tempFive"></p>
+								<p class="windFive"></p>
+								<p class="humFive"></p>
+							</div>
+						</div>
+					</div>
+		<script src="server.js" type="text/javascript"></script>
+	</body>
+</html>
