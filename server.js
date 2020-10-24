@@ -1,15 +1,6 @@
 let currentDate = moment().format('DD-MM-YYYY');
 let APIkey = 'db5d6c660c9863a97f6c659839fd236d';
 let searchZip = [];
-let searchZipInput = document.querySelector('#city-text');
-let searchZipForm = document.querySelector('#city-form');
-let searchZipList = document.querySelector('#city-list');
-
-// get localStorage
-if (localStorage.getItem('locations') == null) {
-    searchZip = JSON.parse(localStorage.getItem('locations'));
-    let data = '';
-}
 
 // current data city search
 let searchWeatherData = function (city) {
@@ -71,7 +62,6 @@ $('#searchForm').on('click', function (event) {
     let li = $('<li class="list-group-item" id="cityHistory">');
 
 
-    // let li = $('<li class="list-group-item #cityHistory">')
 	$('#cityList').append(li);
 	
 	let existingHistory;
@@ -82,7 +72,6 @@ $('#searchForm').on('click', function (event) {
 		console.log('no')
 	}
 
-    // create localStorage
     let cityInput = $('#searchInput').val().trim();
     li.text(cityInput);
 
