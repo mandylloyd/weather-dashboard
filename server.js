@@ -19,13 +19,14 @@ let searchWeatherData = function (city) {
 
 		let iconCode = res.weather[0].icon; 
 	
-		// render html
+        // render html
 		$('.currentIcon').attr("src", "https://openweathermap.org/img/wn/"+ iconCode + "@2x.png");
-        $('.currentCity').html('<h2>' + res.name + '&nbsp' + currentDate);
-        $('.currentHum').html('<p>' + 'Humidity: ' + res.main.humidity + ' %');
-        $('.currentWind').html('<p>' + 'Wind: ' + res.wind.speed + ' MPH');
-		$('.currentTemp').html('<p>' + 'Temperature: ' + res.main.temp);
-		// $('.currentUV').html('<p>' + 'UV Index: ' + );
+        $('.currentCity').html(res.name + '&nbsp');
+        $('.currentDay').html('Date: ' + moment().format('DD-MM-YYYY'));
+        $('.currentHum').html('Humidity: ' + res.main.humidity + ' %');
+        $('.currentWind').html('Wind: ' + res.wind.speed + ' MPH');
+		$('.currentTemp').html('Temperature: ' + res.main.temp);
+		// $('.currentUV').html('UV Index: ' + );
     });
 };
 
@@ -36,30 +37,30 @@ function fullForecast(fiveDay) {
     $.ajax({url: queryURLforecast, method: 'GET'}).then(function (res) {
 		console.log('5 day results', res)
 		
-        $('.dayOne').html('<h4>' + 'Date:' + moment().add(1, 'days').format('DD-MM-YYYY'));
-        $('.tempOne').html('<p>' + 'Temperature: ' + res.list[0].main.temp);
-        $('.windOne').html('<p>' + 'Wind: ' + res.list[0].wind.speed + ' MPH');
-        $('.humOne').html('<p>' + 'Humidity: ' + res.list[0].main.humidity);
+        $('.dayOne').html('Date: ' + moment().add(1, 'days').format('DD-MM-YYYY'));
+        $('.tempOne').html('Temperature: ' + res.list[0].main.temp);
+        $('.windOne').html('Wind: ' + res.list[0].wind.speed + ' MPH');
+        $('.humOne').html('Humidity: ' + res.list[0].main.humidity);
 
-        $('.dayTwo').html('<h4>' + 'Date:' + moment().add(2, 'days').format('DD-MM-YYYY'));
-        $('.tempTwo').html('<p>' + 'Temperature: ' + res.list[1].main.temp);
-        $('.windTwo').html('<p>' + 'Wind: ' + res.list[1].wind.speed + ' MPH');
-        $('.humTwo').html('<p>' + 'Humidity: ' + res.list[1].main.humidity);
+        $('.dayTwo').html('Date: ' + moment().add(2, 'days').format('DD-MM-YYYY'));
+        $('.tempTwo').html('Temperature: ' + res.list[1].main.temp);
+        $('.windTwo').html('Wind: ' + res.list[1].wind.speed + ' MPH');
+        $('.humTwo').html('Humidity: ' + res.list[1].main.humidity);
 
-        $('.dayThree').html('<h4>' + 'Date:' + moment().add(3, 'days').format('DD-MM-YYYY'));
-        $('.tempThree').html('<p>' + 'Temperature: ' + res.list[2].main.temp);
-        $('.windThree').html('<p>' + 'Wind: ' + res.list[2].wind.speed + ' MPH');
-        $('.humThree').html('<p>' + 'Humidity: ' + res.list[2].main.humidity);
+        $('.dayThree').html('Date: ' + moment().add(3, 'days').format('DD-MM-YYYY'));
+        $('.tempThree').html('Temperature: ' + res.list[2].main.temp);
+        $('.windThree').html('Wind: ' + res.list[2].wind.speed + ' MPH');
+        $('.humThree').html('Humidity: ' + res.list[2].main.humidity);
 
-        $('.dayFour').html('<h4>' + 'Date:' + moment().add(4, 'days').format('DD-MM-YYYY'));
-        $('.tempFour').html('<p>' + 'Temperature: ' + res.list[3].main.temp);
-        $('.windFour').html('<p>' + 'Wind: ' + res.list[3].wind.speed + ' MPH');
-        $('.humFour').html('<p>' + 'Humidity: ' + res.list[3].main.humidity);
+        $('.dayFour').html('Date: ' + moment().add(4, 'days').format('DD-MM-YYYY'));
+        $('.tempFour').html('Temperature: ' + res.list[3].main.temp);
+        $('.windFour').html('Wind: ' + res.list[3].wind.speed + ' MPH');
+        $('.humFour').html('Humidity: ' + res.list[3].main.humidity);
 
-        $('.dayFive').html('<h4>' + 'Date:' + moment().add(5, 'days').format('DD-MM-YYYY'));
-        $('.tempFive').html('<p>' + 'Temperature: ' + res.list[4].main.temp);
-        $('.windFive').html('<p>' + 'Wind: ' + res.list[4].wind.speed + ' MPH');
-        $('.humFive').html('<p>' + 'Humidity: ' + res.list[4].main.humidity);
+        $('.dayFive').html('Date: ' + moment().add(5, 'days').format('DD-MM-YYYY'));
+        $('.tempFive').html('Temperature: ' + res.list[4].main.temp);
+        $('.windFive').html('Wind: ' + res.list[4].wind.speed + ' MPH');
+        $('.humFive').html('Humidity: ' + res.list[4].main.humidity);
     });
 }
 searchWeatherData('Richmond');
@@ -67,7 +68,10 @@ fullForecast('Richmond');
 
 $('#searchForm').on('click', function (event) {
     event.preventDefault();
-    let li = $('<li class="cityHistory">');
+    let li = $('<li class="list-group-item" id="cityHistory">');
+
+
+    // let li = $('<li class="list-group-item #cityHistory">')
 	$('#cityList').append(li);
 	
 	let existingHistory;
@@ -90,7 +94,8 @@ $('#searchForm').on('click', function (event) {
     $('#searchInput').val('');
 });
 
-$('#cityList').on("click", ".cityHistory", function() {
+$('#cityList').on("click", "#cityHistory", function() {
 	let cityname = $(this).text();
-	searchWeatherData(cityname);
+    searchWeatherData(cityname);
+    fullForecast(cityname);
 })

@@ -1,0 +1,17 @@
+.nav-wrapper { 
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: rgb(4, 48, 10);
+    color: white;
+}
+
+h4, .currentCity {
+    margin-left: 20px;
+    color: rgb(4, 48, 10);
+}
+
+p {
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
